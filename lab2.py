@@ -21,7 +21,7 @@ response = requests.get(
 )
 
 # full body of the .html
-# with open("readme.html", "w") as f:
+# with open("fullBody.html", "w") as f:
 #     f.write(response.text)
 
 
