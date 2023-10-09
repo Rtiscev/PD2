@@ -45,7 +45,6 @@ with open ("dataset.csv","w") as dataset:
             break
         endCenter = finalString.find("</tr>", startCenter)
         currentposition = endCenter + len("</tr>")
-
         finalCenter = finalString[startCenter : endCenter + len("</tr>")]
 
         arr = []
@@ -59,21 +58,24 @@ with open ("dataset.csv","w") as dataset:
             arr.append(string)
 
         # 0 counter
-        print(getSimpleParts(arr[0], "<td class=first>", "</td>"))
+        toBeAppended+=getSimpleParts(arr[0], "<td class=first>", "</td>")+","
         # 1D temp
-        print(getSimpleParts(arr[1], "<td class='first_in_group positive'>", "</td>"))
+        toBeAppended+=getSimpleParts(arr[1], "<td class='first_in_group positive'>", "</td>")+","
         # 2D pressure
-        print(getSimpleParts(arr[2], "<td>", "</td>"))
+        toBeAppended+=getSimpleParts(arr[2], "<td>", "</td>")+","
         # 5D wind
-        print(getSimpleParts(arr[5], "<td><span>", "</span></td>"))
+        toBeAppended+=getSimpleParts(arr[5], "<td><span>", "</span></td>")+","
         # 6N temp
-        print(getSimpleParts(arr[6], "<td class='first_in_group positive'>", "</td>"))
+        toBeAppended+=getSimpleParts(arr[6], "<td class='first_in_group positive'>", "</td>")+","
         # 7N pressure
-        print(getSimpleParts(arr[7], "<td>", "</td>"))
+        toBeAppended+=getSimpleParts(arr[7], "<td>", "</td>")+","
         # 10N wind
-        print(getSimpleParts(arr[10], "<td><span>", "</span></td>"))
-        
-        print("--------------------")
+        toBeAppended+=getSimpleParts(arr[10], "<td><span>", "</span></td>")+"\n"
+
+        appendData.append(toBeAppended)
+   
+    for item in appendData:
+        dataset.write(item) 
 
 
 # 0         COUNTER
